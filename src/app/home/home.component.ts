@@ -1,19 +1,21 @@
-import {Component, OnInit} from "@angular/core";
-import {SocketService} from "../core/socket.service";
-import {Observable} from "rxjs";
-import {Http} from "@angular/http";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {SocketService} from '../core/socket.service';
+import {Observable} from 'rxjs';
+import {Http} from '@angular/http';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
+import {IUser} from '../../../server/api/users/users.model';
 
 
 @Component({
   selector: 'inv-home',
   template: `
-    <ul *ngFor="let user of (users | async)">
-        <li>{{ user | json }}</li>
-    </ul>
     <form [formGroup]="form">
         <input formControlName="name">
     </form>
+    <ul *ngFor="let user of (users | async)">
+        <li>{{ user | json }}</li>
+    </ul>
     `
 })
 export class HomeComponent implements OnInit {
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
     name: ['']
   });
 
-  public users = Observable
+  public users: Observable<IUser[]> = Observable
     .merge(
       Observable.fromEvent(this.socket, 'users'),
       this.http.get('users').map(data => JSON.parse(data['_body']))

@@ -1,4 +1,4 @@
-export let sockets: SocketIO.Server;
+export let io: SocketIO.Server = null;
 
 export function registerSocket(socket: SocketIO.Server): SocketIO.Server {
   socket.on('connect', (socket: SocketIO.Server) => {
@@ -8,5 +8,5 @@ export function registerSocket(socket: SocketIO.Server): SocketIO.Server {
     console.log('disconnected');
   });
 
-  return sockets = socket;
+  return io = socket;
 }

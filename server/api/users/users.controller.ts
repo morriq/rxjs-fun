@@ -8,7 +8,7 @@ export class UsersController {
     res.json(usersModel).end();
   }
   public insert = (req: Request, res: Response) => {
-    usersModel.push(req.body);
+    usersModel.unshift(req.body);
     res.status(201).end();
   }
 }

@@ -5,11 +5,11 @@ const bodyParser 						= require('body-parser');
 const webpackDevMiddleware 	= require('webpack-dev-middleware');
 const webpack 							= require('webpack');
 
-const webpackConfig 				= require('./../webpack.config.js');
+const webpackConfig 				= require('./../config/webpack.config.js');
 
 const compiler 			= webpack(webpackConfig);
 
-export function registerMiddlewares(app: Application) {
+export function registerMiddlewares(app: Application): void {
   app
     .use(webpackDevMiddleware(compiler, {
       // lazy: true

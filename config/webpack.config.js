@@ -3,10 +3,10 @@ const webpack = require('webpack');
 
 const config = {
 	entry: {
-		app: path.join(__dirname, 'src', 'main.ts')
+		app: path.join(__base, 'src', 'main.ts')
 	},
 	output: {
-		path: path.join(__dirname, 'dist'),
+		path: path.join(__base, 'dist'),
 		filename: 'main.js'
 	},
 	resolve: {
