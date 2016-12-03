@@ -5,6 +5,7 @@ import {Http} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {IUser} from '../../../server/api/users/users.model';
+import {usersApi} from '../../../server/api/users/routes';
 
 
 @Component({
@@ -14,7 +15,12 @@ import {IUser} from '../../../server/api/users/users.model';
         <input formControlName="name">
     </form>
     <ul *ngFor="let user of (users | async)">
-        <li>{{ user | json }}</li>
+        <li>
+            <form (submit)="update(user);">
+                <input [(ngModel)]="user.name" name="name">
+                <input type="submit">
+            </form>
+        </li>
     </ul>
     `
 })
@@ -25,16 +31,21 @@ export class HomeComponent implements OnInit {
 
   public users: Observable<IUser[]> = Observable
     .merge(
-      Observable.fromEvent(this.socket, 'users'),
-      this.http.get('users').map(data => JSON.parse(data['_body']))
+      Observable.fromEvent(this.socket, usersApi),
+      this.http.get(usersApi).map(data => JSON.parse(data['_body']))
     );
+
+  public update(user: IUser): void {
+    this.http.put(usersApi, user)
+      .subscribe();
+  }
 
   public ngOnInit(): void {
     this.form
       .valueChanges
       .debounceTime(500)
       .subscribe(formValue => {
-        this.http.put('users', formValue).subscribe();
+        this.http.post(usersApi, formValue).subscribe();
       });
   }
 
