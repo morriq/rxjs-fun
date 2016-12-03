@@ -10,7 +10,8 @@ const config = {
 		filename: 'main.js'
 	},
 	resolve: {
-		extensions: ['.ts', '.js', '.json']
+		extensions: ['.ts', '.js', '.json'],
+		modules: ['.', 'node_modules']
 	},
 	devtool: 'source-map',
 	module: {

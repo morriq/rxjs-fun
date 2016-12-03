@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 import {Http} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
-import {IUser} from '../../../server/api/users/users.model';
-import {usersApi} from '../../../server/api/users/routes';
+import {IUser} from 'server/api/users/users.model';
+import {usersApi} from 'server/api/users/routes';
 
 
 @Component({
