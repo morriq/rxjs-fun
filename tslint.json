@@ -25,7 +25,6 @@
     "member-ordering": [true, "static-before-instance", "public-before-private", "variables-before-functions"],
     "no-internal-module": true,
     "no-namespace": [true, "allow-declarations"],
-    "no-var-requires": true,
     "no-reference": true,
     "typedef": [true, "call-signature", "parameter", "property-declaration", "member-variable-declaration"],
     "typedef-whitespace": [
@@ -73,7 +72,6 @@
     "max-line-length": [true, 120],
     "no-default-export": true,
     "no-mergeable-namespace": true,
-    "no-require-imports": true,
     "no-trailing-whitespace": true,
     "trailing-comma": [true, {
       "multiline": "never",

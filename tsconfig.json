@@ -13,7 +13,7 @@
       "./node_modules/@types/"
     ],
     "types": [
-      "node"
+      "node", "express", "socket.io", "express-serve-static-core"
     ]
   },
   "compileOnSave": true,
