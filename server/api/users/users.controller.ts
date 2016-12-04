@@ -1,30 +1,32 @@
 import {Request, Response} from 'express-serve-static-core';
 
-import {usersModel} from './users.model';
+import {usersModel, IUser} from './users.model';
 import {Controller} from '../controller';
 
 
-export class UsersController extends Controller {
+export class UsersController extends Controller<IUser> {
   public index = (req: Request, res: Response) => {
-    res.json(usersModel).end();
+    return usersModel.find()
+      .then(this.respondWithResult(res))
+      .catch(this.handleError(res));
   };
   public insert = (req: Request, res: Response) => {
-    req.body.id = new Date().getTime();
-    usersModel.unshift(req.body);
-    res.status(201).end();
+    return usersModel.create(req.body)
+      .then(this.respondWithResult(res, 201))
+      .catch(this.handleError(res));
   };
   public update = (req: Request, res: Response) => {
-    usersModel.some((user, index) => {
-      if (user.id !== req.body.id) {
-        return false;
-      }
-
-      usersModel[index] = req.body;
-      res.status(204).end();
-
-      return true;
-    });
-
-    res.status(404).end();
+    return usersModel.findById(req.body._id)
+      .then(this.handleEntityNotFound(res))
+      .then(this.updateEntity(req.body))
+      .then(this.respondWithResult(res, 204))
+      .catch(this.handleError(res));
+  };
+  public remove = (req: Request, res: Response) => {
+    return usersModel.findById(req.body._id)
+      .then(this.handleEntityNotFound(res))
+      .then(this.removeEntity(res))
+      .then(this.respondWithResult(res, 204))
+      .catch(this.handleError(res));
   };
 }

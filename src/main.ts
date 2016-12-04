@@ -1,13 +1,20 @@
 import 'reflect-metadata';
 import 'zone.js';
 
-import {NgModule, Component} from "@angular/core";
-import {BrowserModule} from "@angular/platform-browser";
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-import {CoreModule} from "./app/core/core.module";
-import {HomeModule} from "./app/home/home.module";
-import {RouterModule} from "@angular/router";
-import {MainRoutes} from "./main.routes";
+import {NgModule, Component, enableProdMode} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {RouterModule} from '@angular/router';
+
+import {CoreModule} from './app/core/core.module';
+import {HomeModule} from './app/home/home.module';
+import {MainRoutes} from './main.routes';
+import {shared, envs} from 'config/environment/shared';
+
+
+if (shared.env === envs[envs.production]) {
+  enableProdMode();
+}
 
 @Component({
   selector: 'inv-app',

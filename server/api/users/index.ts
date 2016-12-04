@@ -10,6 +10,7 @@ const usersController = new UsersController();
 router.get('/', usersController.index);
 router.post('/', usersController.insert);
 router.put('/', usersController.update);
+router.delete('/', usersController.remove);
 
 module.exports = {
   apiName: USERS_API,

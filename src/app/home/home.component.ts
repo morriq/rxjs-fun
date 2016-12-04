@@ -19,6 +19,7 @@ import {USERS_API} from 'server/api/users/routes';
             <form (submit)="update(user);">
                 <input [(ngModel)]="user.name" name="name">
                 <input type="submit">
+                <button (click)="delete(user)" type="button">delete</button>
             </form>
         </li>
     </ul>
@@ -37,6 +38,11 @@ export class HomeComponent implements OnInit {
 
   public update(user: IUser): void {
     this.http.put(USERS_API, user)
+      .subscribe();
+  }
+
+  public delete(user: IUser): void {
+    this.http.delete(USERS_API, user)
       .subscribe();
   }
 

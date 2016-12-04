@@ -1,28 +1,27 @@
+import * as mongoose from 'mongoose';
+
 import {io} from '../../sockets';
 import {USERS_API} from './routes';
 
 export interface IUser {
-  id: number;
+  _id: string;
   name: string;
 }
-
-let users: IUser[] = [];
-for (let i = 0; i <= 10; i++) {
-  users.push({
-    id: i,
-    name: i.toString()
-  });
+export interface IUserDocument extends IUser, mongoose.Document {
+  _id: string;
 }
 
-export const usersModel = new Proxy(users, {
-  set: (target, property, value, receiver) => {
-    if (typeof value === 'number') {
-      return true;
-    }
-
-    target[property] = value;
-    io.emit(USERS_API, target);
-
-    return true;
-  }
+const userSchema: mongoose.Schema = new mongoose.Schema({
+  name: String
 });
+
+const hook = function(doc: IUserDocument): void {
+  this.constructor.find()
+    .then((data: IUser[]) => {
+      io.emit(USERS_API, data);
+    });
+};
+userSchema.post('save', hook);
+userSchema.post('remove', hook);
+
+export const usersModel: mongoose.Model<IUserDocument> = mongoose.model<IUserDocument>('User', userSchema)

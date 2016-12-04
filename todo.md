@@ -1,9 +1,19 @@
 
 - config i core
 
-- baza danych or whatever
+- rxjs mongoose
+
+- karma
+
+- delete
+
+seeddb
+
+- history fallback
 
 - wolno dziala rebuild, livereload
+
+- users controller krocej
 
 http://stackoverflow.com/questions/36826405/webpack-dev-middleware-react-hot-reload-too-slow
 
