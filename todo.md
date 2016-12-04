@@ -7,8 +7,6 @@
 
 - delete
 
-- seeddb
-
 - hooki ladniej
 
 - history fallback
