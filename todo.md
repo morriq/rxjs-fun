@@ -7,7 +7,9 @@
 
 - delete
 
-seeddb
+- seeddb
+
+- hooki ladniej
 
 - history fallback
 

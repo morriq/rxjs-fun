@@ -5,7 +5,7 @@ import {Http} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {IUser} from 'server/api/users/users.model';
-import {USERS_API} from 'server/api/users/routes';
+import {USERS_API} from '../../../server/api/users/users.routes';
 
 
 @Component({

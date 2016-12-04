@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 import {io} from '../../sockets';
-import {USERS_API} from './routes';
+import {USERS_API} from './users.routes';
 
 export interface IUser {
   _id: string;

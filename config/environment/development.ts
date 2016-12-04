@@ -1,5 +1,5 @@
 module.exports = {
-  // MongoDB connection options
+  seedDB: true,
   mongo: {
     uri: 'mongodb://localhost/fb3-dev'
   }
