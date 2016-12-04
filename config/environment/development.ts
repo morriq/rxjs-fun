@@ -6,6 +6,6 @@ module.exports = {
   ip: process.env.IP || '0.0.0.0',
   seedDB: true,
   mongo: {
-    uri: 'mongodb://localhost/fb3-dev'
+    uri: 'mongodb://localhost/inv-dev'
   }
 };

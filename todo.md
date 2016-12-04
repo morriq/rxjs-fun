@@ -1,11 +1,7 @@
 
-- config i core [nie dziala node_env na frontend]
-
 - rxjs mongoose
 
 - karma
-
-- off webpack middleware in prod
 
 - hooki smarter
 

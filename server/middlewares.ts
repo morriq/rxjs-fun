@@ -1,4 +1,5 @@
 import {Application} from 'express-serve-static-core';
+import {configuration} from "../config/environment/index";
 
 const bodyParser 						= require('body-parser');
 
@@ -10,10 +11,12 @@ const webpackConfig 				= require('./../config/webpack.config.ts');
 const compiler 			= webpack(webpackConfig);
 
 export function registerMiddlewares(app: Application): void {
-  app
-    .use(webpackDevMiddleware(compiler, {
-      // lazy: true
-    }));
+  if (configuration !== 'production') {
+    app
+      .use(webpackDevMiddleware(compiler, {
+        // lazy: true
+      }));
+  }
 
 // to support JSON-encoded bodies
   app.use(bodyParser.json());
