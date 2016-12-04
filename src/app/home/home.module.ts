@@ -14,7 +14,8 @@ import {ReactiveFormsModule, FormsModule} from "@angular/forms";
     FormsModule,
     RouterModule.forChild([
       {
-        path: '**',
+        path: '',
+        pathMatch: 'full',
         component: HomeComponent
       }
     ])
