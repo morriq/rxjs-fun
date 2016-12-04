@@ -13,11 +13,14 @@ const config = {
     extensions: ['.ts', '.js', '.json'],
     modules: ['.', 'node_modules']
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
+  devtool: false,
+  cache: true,
   module: {
     loaders: [
       {
         test: /\.ts$/,
+        exclude: /(node_modules)/,
         loaders: [
           'awesome-typescript-loader',
           'angular2-template-loader',
@@ -27,6 +30,19 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: (module) => {
+        let userRequest = module.userRequest;
+
+        if (typeof userRequest !== 'string') {
+          return false;
+        }
+
+        return userRequest.indexOf('bower_components') >= 0 ||
+          userRequest.indexOf('node_modules') >= 0;
+      }
+    }),
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname

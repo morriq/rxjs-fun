@@ -1,20 +1,22 @@
 import {Application} from 'express-serve-static-core';
-import {configuration} from "../config/environment/index";
+import {configuration} from '../config/environment/index';
 
-const bodyParser 						= require('body-parser');
+const bodyParser = require('body-parser');
 
-const webpackDevMiddleware 	= require('webpack-dev-middleware');
-const webpack 							= require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
 
-const webpackConfig 				= require('./../config/webpack.config.ts');
+const webpackConfig = require('./../config/webpack.config.ts');
 
-const compiler 			= webpack(webpackConfig);
+const compiler = webpack(webpackConfig);
 
 export function registerMiddlewares(app: Application): void {
   if (configuration !== 'production') {
     app
       .use(webpackDevMiddleware(compiler, {
-        // lazy: true
+        watchOptions: {
+          poll: true
+        }
       }));
   }
 
