@@ -20,7 +20,7 @@ const config = {
     loaders: [
       {
         test: /\.ts$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         loaders: [
           'awesome-typescript-loader',
           'angular2-template-loader',
@@ -32,15 +32,15 @@ const config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: (module) => {
+      filename: 'vendor.js',
+      minChunks: (module: any) => {
         let userRequest = module.userRequest;
 
         if (typeof userRequest !== 'string') {
           return false;
         }
 
-        return userRequest.indexOf('bower_components') >= 0 ||
-          userRequest.indexOf('node_modules') >= 0;
+        return userRequest.indexOf('node_modules') >= 0;
       }
     }),
     new webpack.ContextReplacementPlugin(
