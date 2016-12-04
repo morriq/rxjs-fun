@@ -2,9 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 const config = {
-  entry: {
-    app: path.join(global.__base, 'src', 'app.ts')
-  },
+  entry: [
+    path.join(global.__base, 'src', 'app.ts'),
+    // only dev:
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
+  ],
   output: {
     path: path.join(global.__base, 'dist'),
     filename: 'app.js'
@@ -13,6 +15,7 @@ const config = {
     extensions: ['.ts', '.js', '.json'],
     modules: ['.', 'node_modules']
   },
+  // only dev
   // devtool: 'source-map',
   devtool: false,
   cache: true,
@@ -30,6 +33,9 @@ const config = {
     ]
   },
   plugins: [
+    // only dev
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.js',

@@ -15,6 +15,9 @@ import {sharedConfiguration} from 'config/environment/shared';
 if (sharedConfiguration.env === 'production') {
   enableProdMode();
 }
+if (module && module['hot']) {
+  module['hot'].accept();
+}
 
 @Component({
   selector: 'inv-app',

@@ -1,6 +1,3 @@
-
-- wolno dziala rebuild, livereload, vendors
-
 - rxjs mongoose
 
 - karma
@@ -11,6 +8,7 @@
 
 uglify, scss
 
+prod command
 
 http://stackoverflow.com/questions/36826405/webpack-dev-middleware-react-hot-reload-too-slow
 
