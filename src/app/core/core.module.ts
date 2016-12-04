@@ -1,6 +1,8 @@
-import {NgModule} from "@angular/core";
-import {SocketService} from "./socket.service";
+import {NgModule} from '@angular/core';
 const io = require('socket.io-client');
+
+import {SocketService} from './socket.service';
+
 
 @NgModule({
   imports: [

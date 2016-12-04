@@ -2,6 +2,7 @@ import {Request, Response} from 'express-serve-static-core';
 
 import {usersModel, IUser} from './users.model';
 import {Controller} from '../controller';
+import {USERS_API_USERID} from './users.routes';
 
 
 export class UsersController extends Controller<IUser> {
@@ -23,7 +24,7 @@ export class UsersController extends Controller<IUser> {
       .catch(this.handleError(res));
   };
   public remove = (req: Request, res: Response) => {
-    return usersModel.findById(req.body._id)
+    return usersModel.findById(req.params[USERS_API_USERID.substr(1)])
       .then(this.handleEntityNotFound(res))
       .then(this.removeEntity(res))
       .then(this.respondWithResult(res, 204))

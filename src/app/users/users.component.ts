@@ -5,7 +5,7 @@ import {Http} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {IUser} from 'server/api/users/users.model';
-import {USERS_API} from '../../../server/api/users/users.routes';
+import {USERS_API, USERS_API_SINGLE, USERS_API_USERID} from '../../../server/api/users/users.routes';
 
 
 @Component({
@@ -42,7 +42,9 @@ export class UsersComponent implements OnInit {
   }
 
   public delete(user: IUser): void {
-    this.http.delete(USERS_API, user)
+    this.http.delete(
+      USERS_API_SINGLE.replace(USERS_API_USERID, user._id)
+    )
       .subscribe();
   }
 

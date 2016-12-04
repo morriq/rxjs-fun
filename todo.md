@@ -5,8 +5,6 @@
 
 - karma
 
-- delete
-
 - hooki ladniej
 
 - wolno dziala rebuild, livereload
