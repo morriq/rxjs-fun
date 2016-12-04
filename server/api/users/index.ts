@@ -1,7 +1,7 @@
 import {Router} from 'express';
 
 import {UsersController} from './users.controller';
-import {USERS_API, USERS_API_SINGLE} from './users.routes';
+import {USERS_API, USERS_API_SINGLE} from './users.constants';
 
 
 const router = Router();

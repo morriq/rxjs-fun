@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 const io = require('socket.io-client');
 
 import {SocketService} from './socket.service';
+import {configuration} from '../../../config/environment/index';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import {SocketService} from './socket.service';
   providers: [
     {
       provide: 'URL',
-      useValue: 'http://localhost:3000'
+      useValue: configuration.ip + ':' + configuration.port
     },
     {
       provide: SocketService,

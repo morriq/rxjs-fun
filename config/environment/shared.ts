@@ -1,9 +1,8 @@
-export enum envs {
-  development,
-  test,
-  production
-}
+import {configuration} from './index';
 
-export const shared = {
-  env: envs[envs[process.env.NODE_ENV]] || envs[envs.development]
+
+export const sharedConfiguration = {
+  env: configuration.env,
+  port: configuration.port,
+  ip: configuration.ip
 };

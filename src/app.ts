@@ -8,11 +8,11 @@ import {RouterModule} from '@angular/router';
 
 import {CoreModule} from './app/core/core.module';
 import {UsersModule} from './app/users/users.module';
-import {MainRoutes} from './main.routes';
-import {shared, envs} from 'config/environment/shared';
+import {MainRoutes} from './app.routes';
+import {sharedConfiguration} from 'config/environment/shared';
 
 
-if (shared.env === envs[envs.production]) {
+if (sharedConfiguration.env === 'production') {
   enableProdMode();
 }
 

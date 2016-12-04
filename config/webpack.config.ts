@@ -3,11 +3,11 @@ const webpack = require('webpack');
 
 const config = {
   entry: {
-    app: path.join(global.__base, 'src', 'main.ts')
+    app: path.join(global.__base, 'src', 'app.ts')
   },
   output: {
     path: path.join(global.__base, 'dist'),
-    filename: 'main.js'
+    filename: 'app.js'
   },
   resolve: {
     extensions: ['.ts', '.js', '.json'],
@@ -30,7 +30,12 @@ const config = {
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       __dirname
-    )
+    ),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ]
 };
 

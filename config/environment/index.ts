@@ -1,15 +1,8 @@
-import {shared} from './shared';
-
-
 const all = {
+  env: process.env.NODE_ENV,
+
   // Root path of server
   root: global.__base,
-
-  // Server port
-  port: process.env.PORT || 9000,
-
-  // Server IP
-  ip: process.env.IP || '0.0.0.0',
 
   // Should we populate the DB with sample data?
   seedDB: false,
@@ -24,4 +17,4 @@ const all = {
   }
 };
 
-module.exports = Object.assign(all, shared, require('./' + shared.env));
+export const configuration = Object.assign(all, require('./' + process.env.NODE_ENV));

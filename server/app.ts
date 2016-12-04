@@ -1,18 +1,18 @@
 import * as path from 'path';
 import * as http from 'http';
 
-import * as process from 'process';
 import * as express from 'express';
+import * as socket from 'socket.io';
 
-const socket = require('socket.io');
-
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+global.__base = path.join(__dirname, '..');
 process.chdir('server');
+
+import {configuration} from '../config/environment/index';
 
 const app     = express();
 const server 	= http.createServer(app);
-server.listen(3000);
-
-global.__base = path.join(__dirname, '..');
+server.listen(configuration.port);
 
 require('./middlewares').registerMiddlewares(app);
 require('./routes').registerRoutes(app);

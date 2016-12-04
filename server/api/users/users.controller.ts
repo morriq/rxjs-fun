@@ -2,7 +2,7 @@ import {Request, Response} from 'express-serve-static-core';
 
 import {usersModel, IUser} from './users.model';
 import {Controller} from '../controller';
-import {USERS_API_USERID} from './users.routes';
+import {USERS_API_USERID} from './users.constants';
 
 
 export class UsersController extends Controller<IUser> {

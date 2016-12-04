@@ -1,15 +1,18 @@
 
-- config i core
+- config i core [nie dziala node_env na frontend]
 
 - rxjs mongoose
 
 - karma
 
-- hooki ladniej
+- off webpack middleware in prod
+
+- hooki smarter
+
+- users controller shorter
 
 - wolno dziala rebuild, livereload
 
-- users controller krocej
 
 http://stackoverflow.com/questions/36826405/webpack-dev-middleware-react-hot-reload-too-slow
 
