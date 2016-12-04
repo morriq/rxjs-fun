@@ -6,9 +6,11 @@
 
 - users controller shorter
 
-uglify, scss
+- uglify, scss
 
-prod command
+- prod command
+
+- https://github.com/glenjamin/webpack-hot-middleware/issues/21
 
 http://stackoverflow.com/questions/36826405/webpack-dev-middleware-react-hot-reload-too-slow
 

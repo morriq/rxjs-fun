@@ -1,11 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const config = {
+export const commonConfig = {
   entry: [
-    path.join(global.__base, 'src', 'app.ts'),
-    // only dev:
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
+    path.join(global.__base, 'src', 'app.ts')
   ],
   output: {
     path: path.join(global.__base, 'dist'),
@@ -15,9 +13,6 @@ const config = {
     extensions: ['.ts', '.js', '.json'],
     modules: ['.', 'node_modules']
   },
-  // only dev
-  // devtool: 'source-map',
-  devtool: false,
   cache: true,
   module: {
     loaders: [
@@ -33,8 +28,6 @@ const config = {
     ]
   },
   plugins: [
-    // only dev
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -60,5 +53,3 @@ const config = {
     })
   ]
 };
-
-module.exports = config;

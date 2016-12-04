@@ -3,13 +3,6 @@ import {configuration} from '../config/environment/index';
 
 const bodyParser = require('body-parser');
 
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpack = require('webpack');
-
-const webpackConfig = require('./../config/webpack.config.ts');
-
-const compiler = webpack(webpackConfig);
 
 export function registerMiddlewares(app: Application): void {
 // to support JSON-encoded bodies
@@ -19,9 +12,18 @@ export function registerMiddlewares(app: Application): void {
     extended: true
   }));
 
-  if (configuration === 'production') {
+  if (configuration.env === 'production') {
     return;
   }
+
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const webpack = require('webpack');
+
+  const webpackConfig = require('./../config/webpack.dev.ts');
+
+  const compiler = webpack(webpackConfig);
+
   app
     .use(webpackDevMiddleware(compiler, {
       watchOptions: {
