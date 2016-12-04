@@ -3,8 +3,8 @@ import {Routes} from "@angular/router";
 
 export const MainRoutes: Routes = [
   {
-    path: '',
+    path: 'users',
     pathMatch: 'full',
-    loadChildren: './app/home/home.module#HomeModule'
+    loadChildren: './app/users/users.module#UsersModule'
   }
 ];

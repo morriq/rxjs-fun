@@ -7,7 +7,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {RouterModule} from '@angular/router';
 
 import {CoreModule} from './app/core/core.module';
-import {HomeModule} from './app/home/home.module';
+import {UsersModule} from './app/users/users.module';
 import {MainRoutes} from './main.routes';
 import {shared, envs} from 'config/environment/shared';
 
@@ -26,7 +26,7 @@ class AppComponent {}
   imports: [
     BrowserModule,
     RouterModule,
-    HomeModule,
+    UsersModule,
     CoreModule,
     RouterModule.forRoot(MainRoutes)
   ],

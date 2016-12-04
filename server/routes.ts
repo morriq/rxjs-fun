@@ -7,8 +7,7 @@ import {Application, Request, Response} from 'express-serve-static-core';
 export function registerRoutes(app: Application): void {
   const files = glob('./api/**/index.ts', {sync: true});
   files.forEach((file: string) => {
-    let {router, apiName} = require(file);
-    app.use(apiName, router);
+    app.use(require(file));
   });
 
   app.get('/*', (req: Request, res: Response) => {

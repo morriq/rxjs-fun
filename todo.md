@@ -9,8 +9,6 @@
 
 - hooki ladniej
 
-- history fallback
-
 - wolno dziala rebuild, livereload
 
 - users controller krocej

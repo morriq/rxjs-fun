@@ -1,1 +1,1 @@
-export const USERS_API = '/users';
+export const USERS_API = '/api/users';

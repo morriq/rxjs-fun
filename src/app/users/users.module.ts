@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {HomeComponent} from "./home.component";
+import {UsersComponent} from "./users.component";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
@@ -16,15 +16,15 @@ import {ReactiveFormsModule, FormsModule} from "@angular/forms";
       {
         path: '',
         pathMatch: 'full',
-        component: HomeComponent
+        component: UsersComponent
       }
     ])
   ],
   exports: [
-    HomeComponent
+    UsersComponent
   ],
   declarations: [
-    HomeComponent
+    UsersComponent
   ]
 })
-export class HomeModule {}
+export class UsersModule {}

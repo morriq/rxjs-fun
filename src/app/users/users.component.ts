@@ -9,7 +9,7 @@ import {USERS_API} from '../../../server/api/users/users.routes';
 
 
 @Component({
-  selector: 'inv-home',
+  selector: 'inv-users',
   template: `
     <form [formGroup]="form">
         <input formControlName="name">
@@ -25,7 +25,7 @@ import {USERS_API} from '../../../server/api/users/users.routes';
     </ul>
     `
 })
-export class HomeComponent implements OnInit {
+export class UsersComponent implements OnInit {
   public form: FormGroup = this.fb.group({
     name: ['']
   });
