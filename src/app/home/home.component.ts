@@ -5,7 +5,7 @@ import {Http} from '@angular/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {IUser} from 'server/api/users/users.model';
-import {usersApi} from 'server/api/users/routes';
+import {USERS_API} from 'server/api/users/routes';
 
 
 @Component({
@@ -31,12 +31,12 @@ export class HomeComponent implements OnInit {
 
   public users: Observable<IUser[]> = Observable
     .merge(
-      Observable.fromEvent(this.socket, usersApi),
-      this.http.get(usersApi).map(data => JSON.parse(data['_body']))
+      Observable.fromEvent(this.socket, USERS_API),
+      this.http.get(USERS_API).map(data => JSON.parse(data['_body']))
     );
 
   public update(user: IUser): void {
-    this.http.put(usersApi, user)
+    this.http.put(USERS_API, user)
       .subscribe();
   }
 
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       .valueChanges
       .debounceTime(500)
       .subscribe(formValue => {
-        this.http.post(usersApi, formValue).subscribe();
+        this.http.post(USERS_API, formValue).subscribe();
       });
   }
 

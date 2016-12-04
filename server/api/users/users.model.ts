@@ -1,5 +1,5 @@
 import {io} from '../../sockets';
-import {usersApi} from './routes';
+import {USERS_API} from './routes';
 
 export interface IUser {
   id: number;
@@ -21,7 +21,7 @@ export const usersModel = new Proxy(users, {
     }
 
     target[property] = value;
-    io.emit(usersApi, target);
+    io.emit(USERS_API, target);
 
     return true;
   }

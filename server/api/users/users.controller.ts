@@ -5,7 +5,7 @@ import {Controller} from '../controller';
 
 
 export class UsersController extends Controller {
-  public show = (req: Request, res: Response) => {
+  public index = (req: Request, res: Response) => {
     res.json(usersModel).end();
   };
   public insert = (req: Request, res: Response) => {
